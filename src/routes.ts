@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { userController } from "./controllers/userController.js";
-import { data } from "./database.js";
+import { UserController } from "./controllers/userController";
 
 const routes = Router();
+const userController = new UserController();
 
 routes.get("/", userController.getUser);
 

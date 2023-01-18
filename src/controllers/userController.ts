@@ -1,7 +1,8 @@
-import { data } from "../database.js";
+import { Request, Response } from "express";
+import { data } from "../database";
 
-const userController = {
-  createUser(req, res) {
+export class UserController {
+  createUser(req: Request, res:Response): Response {
     const { name } = req.body;
 
     if (name.length < 1) {
@@ -10,11 +11,10 @@ const userController = {
         .json("não foi possível cadastrar usuários sem nome.");
     }
 
-    data.push(name);
+    data.push(name)
     return res.status(201).json(data);
-  },
-  getUser(req,res){
+  }
+  getUser(req:Request,res:Response){
   return res.status(200).json(data)
   }
 };
-export { userController };
